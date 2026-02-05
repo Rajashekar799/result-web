@@ -1,0 +1,304 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+}
+
+/* Login Page */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%);
+}
+
+.login-container {
+    background: white;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    max-width: 420px;
+    width: 100%;
+}
+
+.login-header {
+    background: white;
+    padding: 30px 30px 20px;
+    text-align: center;
+    color: #333;
+    border-radius: 4px 4px 0 0;
+}
+
+.logo-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    background: url('https://erp.sreyas.ac.in/Docs/SREYAS/App/logo.png') no-repeat center;
+    background-size: contain;
+}
+
+.login-title {
+    font-size: 24px;
+    font-weight: normal;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.login-subtitle {
+    font-size: 18px;
+    color: #666;
+    font-weight: 300;
+}
+
+.login-form {
+    padding: 20px 30px 30px;
+    background: #f8f9fa;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    color: #555;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: #1976d2;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #1976d2;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 10px;
+}
+
+.login-btn:hover {
+    background: #1565c0;
+}
+
+.form-footer {
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+/* Results Page */
+.results-page {
+    min-height: 100vh;
+    background: #f5f5f5;
+}e9ecef;
+}
+
+.header {
+    background: #004d40;
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-icon {
+    width: 40px;
+    height: 40px;
+    background: url('https://erp.sreyas.ac.in/Docs/SREYAS/App/logo.png') no-repeat center;
+    background-size: contain;
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.logout-btn {
+    background: #00695c;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.logout-btn:hover {
+    background: #00796b
+
+.student-banner {
+    background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+    padding: 30px 40px;
+    display: flex;
+    align-items: center;
+    gap: 25px;white;
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #dee2e6;
+}
+
+.student-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 4px;
+    background: #1976d2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 32px;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.student-info {
+    flex: 1;
+}
+
+.student-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+}
+
+.student-roll {
+    font-size: 13px;
+    color: #6c757d;
+    margin-bottom: 3px;
+}
+
+.student-email {
+    font-size: 13px;
+    color: #6c757d1400px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+.semester-section {
+    background: white;
+    border-radius: 4px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.semester-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #004d40;
+}
+
+.no-data {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-style: italic;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+}
+
+th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #495057;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e9ecef;
+    font-size: 14px;
+    color: #495057;
+}
+
+tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.course-code {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.grade {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+    min-width: 50px;
+    text-align: center;
+}
+
+.grade-a { background: #e8f5e9; color: #2e7d32; }
+.grade-b { background: #e3f2fd; color: #1565c0; }
+.grade-b-plus { background: #e1f5fe; color: #01579b; }
+.grade-c { background: #fff3e0; color: #e65100; }
+
+.result-p { color: #2e7d32; font-weight: 600; }
+
+@media (max-width: 768px) {
+    .header { padding: 15px 20px; }
+    .student-banner { padding: 20px; flex-direction: column; text-align: center; }
+    .content { padding: 20px 10px; }
+    .semester-section { padding: 20px; }
+    table { font-size: 12px; }
+    th, td { padding: 10px 8px; }
+}

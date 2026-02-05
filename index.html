@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SREYAS - Student Results</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f0f2f5;
+            min-height: 100vh;
+        }
+
+        .login-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.4) 0%, rgba(21, 101, 192, 0.4) 50%, rgba(25, 118, 210, 0.4) 100%),
+                        url('campus-background.png') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .login-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.3) 0%, rgba(21, 101, 192, 0.3) 50%, rgba(25, 118, 210, 0.3) 100%);
+            z-index: 0;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            max-width: 420px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-header {
+            background: white;
+            padding: 30px 30px 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        .logo-icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 15px;
+            background: url('https://erp.sreyas.ac.in/Docs/SREYAS/App/logo.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .login-title {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .login-subtitle {
+            font-size: 18px;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .login-form {
+            padding: 20px 30px 30px;
+            background: #f8f9fa;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus {
+            border-color: #1976d2;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background: #1565c0;
+        }
+
+        .form-footer {
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+
+        .results-page {
+            min-height: 100vh;
+            background: #e9ecef;
+        }
+
+        .header {
+            background: #004d40;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 5px 15px 5px 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+        }
+
+        .user-photo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid #00695c;
+            object-fit: cover;
+        }
+
+        .user-details {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .user-roll {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.2;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .header-icon {
+            width: 40px;
+            height: 40px;
+            background: url('https://erp.sreyas.ac.in/Docs/SREYAS/App/logo.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .header-title {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .logout-btn {
+            background: #00695c;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 3px;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        .logout-btn:hover {
+            background: #00796b;
+        }
+
+        .student-banner {
+            background: white;
+            padding: 25px 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .student-photo {
+            width: 90px;
+            height: 90px;
+            border-radius: 4px;
+            background: #1976d2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            object-fit: cover;
+        }
+
+        .student-info {
+            flex: 1;
+        }
+
+        .student-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .student-roll {
+            font-size: 13px;
+            color: #6c757d;
+            margin-bottom: 3px;
+        }
+
+        .student-email {
+            font-size: 13px;
+            color: #6c757d;
+        }
+
+        .content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .semester-section {
+            background: white;
+            border-radius: 4px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .semester-title {
+            font-size: 19px;
+            font-weight: 600;
+            color: #212529;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #004d40;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-style: italic;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f8f9fa;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        th {
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #495057;
+            font-size: 13px;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e9ecef;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .course-code {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .grade {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .grade-a { background: #e8f5e9; color: #2e7d32; }
+        .grade-b { background: #e3f2fd; color: #1565c0; }
+        .grade-b-plus { background: #e1f5fe; color: #01579b; }
+        .grade-c { background: #fff3e0; color: #e65100; }
+        .grade-f { background: #ffebee; color: #c62828; }
+
+        .result-p { color: #2e7d32; font-weight: 600; }
+        .result-f { color: #c62828; font-weight: 600; }
+        
+        .failed-row {
+            background-color: #ffebee !important;
+        }
+        
+        .failed-row:hover {
+            background-color: #ffcdd2 !important;
+        }
+
+        @media (max-width: 768px) {
+            .header { padding: 15px 20px; }
+            .student-banner { padding: 20px; flex-direction: column; text-align: center; }
+            .content { padding: 20px 10px; }
+            .semester-section { padding: 20px; }
+            table { font-size: 12px; }
+            th, td { padding: 10px 8px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    
+    <script type="text/babel">
+        const { useState } = React;
+
+        const semesterData = {
+            '1-1': { 
+                title: 'I Year - I Semester', 
+                courses: [
+                    { code: 'A1008', name: 'MATRICES AND CALCULUS', month: 'December 2022', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 4.00, result: 'P' },
+                    { code: 'A1003', name: 'ENGINEERING CHEMISTRY', month: 'December 2022', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
+                    { code: 'A1005', name: 'PROGRAMMING FOR PROBLEM SOLVING', month: 'December 2022', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
+                    { code: 'A1001', name: 'BASIC ELECTRICAL ENGINEERING', month: 'December 2022', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
+                    { code: 'A1701', name: 'COMPUTER AIDED ENGINEERING GRAPHICS', month: 'December 2022', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
+                    { code: 'A1004', name: 'ELEMENTS OF COMPUTER SCIENCE & ENGINEERING', month: 'December 2022', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 1.00, result: 'P' },
+                    { code: 'A1001', name: 'ENGINEERING CHEMISTRY LABORATORY', month: 'December 2022', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
+                    { code: 'A1006', name: 'PROGRAMMING FOR PROBLEM SOLVING LABORATORY', month: 'December 2022', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.00, result: 'P' },
+                    { code: 'A1402', name: 'BASIC ELECTRICAL ENGINEERING LABORATORY', month: 'December 2022', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' }
+                ]
+            },
+            '1-2': { 
+                title: 'I Year - II Semester', 
+                courses: [
+                    { code: 'A1010', name: 'ORDINARY DIFFERENTIAL EQUATIONS AND VECTOR CALCULUS', month: 'May 2023', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 4.00, result: 'P' },
+                    { code: 'A1001', name: 'APPLIED PHYSICS', month: 'May 2023', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 4.00, result: 'P' },
+                    { code: 'A1303', name: 'ENGINEERING WORKSHOP', month: 'May 2023', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 2.50, result: 'P' },
+                    { code: 'A1005', name: 'ENGLISH FOR SKILL ENHANCEMENT', month: 'May 2023', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 2.00, result: 'P' },
+                    { code: 'A1508', name: 'DATA STRUCTURES', month: 'May 2023', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 3.00, result: 'P' },
+                    { code: 'A1002', name: 'APPLIED PHYSICS LABORATORY', month: 'May 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.50, result: 'P' },
+                    { code: 'A1509', name: 'DATA STRUCTURES LABORATORY', month: 'May 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.00, result: 'P' },
+                    { code: 'A1006', name: 'ENGLISH LANGUAGE AND COMMUNICATION SKILLS LABORATORY', month: 'May 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.00, result: 'P' },
+                    { code: 'A1512', name: 'IT WORKSHOP', month: 'May 2023', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
+                    { code: 'A1027', name: 'ENVIRONMENTAL SCIENCE', month: 'May 2023', grade: 'P', gradeClass: 'grade-b', points: 0, credits: 0.00, result: 'P' }
+                ]
+            },
+            '2-1': { 
+                title: 'II Year - I Semester', 
+                courses: [
+                    { code: 'A1506', name: 'ANALOG AND DIGITAL ELECTRONICS', month: 'December 2023', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' },
+                    { code: 'A1513', name: 'PYTHON PROGRAMMING', month: 'December 2023', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' },
+                    { code: 'A1011', name: 'COMPUTER ORIENTED STATISTICAL METHODS', month: 'December 2023', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 4.00, result: 'P' },
+                    { code: 'A1515', name: 'COMPUTER ORGANIZATION AND ARCHITECTURE', month: 'December 2023', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
+                    { code: 'A1516', name: 'DATABASE MANAGEMENT SYSTEMS', month: 'December 2023', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
+                    { code: 'A1514', name: 'PYTHON PROGRAMMING LAB', month: 'December 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.50, result: 'P' },
+                    { code: 'A1517', name: 'DATABASE MANAGEMENT SYSTEMS LAB', month: 'December 2023', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.50, result: 'P' },
+                    { code: 'A1518', name: 'GENDER SENSITIZATION LAB', month: 'December 2023', grade: 'P', gradeClass: 'grade-b', points: 0, credits: 0.00, result: 'P' },
+                    { code: 'A1538', name: 'SKILL DEVELOPMENT COURSE (DATA VISUALIZATION-R)', month: 'December 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 0.00, result: 'P' },
+                    { code: 'A1009', name: 'HUMAN VALUES & ETHICS', month: 'December 2023', grade: 'P', gradeClass: 'grade-b', points: 0, credits: 0.00, result: 'P' }
+                ]
+            },
+            '2-2': { 
+                title: 'II Year - II Semester', 
+                courses: [
+                    { code: 'A1519', name: 'DISCRETE MATHEMATICS', month: 'July 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
+                    { code: 'A1016', name: 'BUSINESS ECONOMICS & FINANCIAL ANALYSIS', month: 'July 2024', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
+                    { code: 'A1603', name: 'OPERATING SYSTEMS', month: 'July 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
+                    { code: 'A1520', name: 'OBJECT ORIENTED PROGRAMMING THROUGH JAVA', month: 'July 2024', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' },
+                    { code: 'A1601', name: 'SOFTWARE ENGINEERING', month: 'July 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
+                    { code: 'A1604', name: 'OPERATING SYSTEMS LABORATORY', month: 'July 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' },
+                    { code: 'A1521', name: 'OBJECT ORIENTED PROGRAMMING THROUGH JAVA LABORATORY', month: 'July 2024', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 1.00, result: 'P' },
+                    { code: 'A1522', name: 'REAL-TIME RESEARCH PROJECT/SOCIETAL RELATED PROJECT', month: 'July 2024', grade: 'O', gradeClass: 'grade-b', points: 0, credits: 2.00, result: 'P' },
+                    { code: 'A1605', name: 'SKILL DEVELOPMENT COURSE (NODE JS/REACT JS/DJANGO)', month: 'July 2024', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 1.00, result: 'P' },
+                    { code: 'A1017', name: 'CONSTITUTION OF INDIA', month: 'July 2024', grade: 'P', gradeClass: 'grade-b', points: 0, credits: 0.00, result: 'P' }
+                ]
+            },
+            '3-1': { 
+                title: 'III Year - I Semester', 
+                courses: [
+                    { code: 'A1019', name: 'ADVANCED ENGLISH COMMUNICATION SKILLS LAB', month: 'December 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' },
+                    { code: 'A1020', name: 'INTELLECTUAL PROPERTY RIGHTS', month: 'December 2024', grade: 'P', gradeClass: 'grade-b', points: 0, credits: 0.00, result: 'P' },
+                    { code: 'A1021', name: 'LOGICAL REASONING - 1', month: 'December 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' },
+                    { code: 'A1523', name: 'DESIGN AND ANALYSIS OF ALGORITHMS', month: 'December 2024', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
+                    { code: 'A1524', name: 'COMPUTER NETWORKS', month: 'December 2024', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
+                    { code: 'A1525', name: 'COMPUTER NETWORKS LAB', month: 'December 2024', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 1.00, result: 'P' },
+                    { code: 'A1526', name: 'WEB TECHNOLOGIES', month: 'December 2024', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' },
+                    { code: 'A1527', name: 'WEB TECHNOLOGIES LAB', month: 'December 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' },
+                    { code: 'A1528', name: 'SKILL DEVELOPMENT COURSE (UI DESIGN-FLUTTER)', month: 'December 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' },
+                    { code: 'A1543', name: 'DATA ANALYTICS', month: 'December 2024', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' }
+                ]
+            },
+            '3-2': { 
+                title: 'III Year - II Semester', 
+                courses: [
+                    { code: 'A1536', name: 'CLOUD COMPUTING', month: 'May 2025', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' },
+                    { code: 'A1604', name: 'AUTOMATA THEORY AND COMPILER DESIGN', month: 'May 2025', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' },
+                    { code: 'A1611', name: 'MACHINE LEARNING', month: 'May 2025', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
+                    { code: 'A1740', name: 'FULL STACK DEVELOPMENT', month: 'May 2025', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' },
+                    { code: 'A1757', name: 'DISASTER PREPAREDNESS & PLANNING MANAGEMENT', month: 'May 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 3.00, result: 'P' },
+                    { code: 'A1537', name: 'CLOUD COMPUTING LAB', month: 'May 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
+                    { code: 'A1643', name: 'FULL STACK DEVELOPMENT LAB', month: 'May 2025', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 1.00, result: 'P' },
+                    { code: 'A1530', name: 'CLOUD COMPUTING', month: 'May 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
+                    { code: 'A1022', name: 'LOGICAL REASONING - II', month: 'May 2025', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' },
+                    { code: 'A1531', name: 'INDUSTRIAL ORIENTED MINI PROJECT/INTERNSHIP/SKILL DEVELOPMENT COURSE (BIG DATA SPARK)', month: 'May 2025', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 1.00, result: 'P' }
+                ]
+            },
+            '4-1': {
+                title: 'IV Year - I Semester',
+                courses: [
+                    { code: 'A1532', name: 'CRYPTOGRAPHY AND NETWORK SECURITY', month: 'November 2025', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
+                    { code: 'A1754', name: 'DATA MINING', month: 'November 2025', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 3.00, result: 'P' },
+                    { code: 'A1534', name: 'DEVOPS', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 3.00, result: 'P' },
+                    { code: 'A1594', name: 'PRINCIPLES OF ENTREPRENEURSHIP', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 3.00, result: 'P' },
+                    { code: 'A1576', name: 'SOFTWARE PROCESS & PROJECT MANAGEMENT', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 3.00, result: 'P' },
+                    { code: 'A1533', name: 'CRYPTOGRAPHY AND NETWORK SECURITY LAB', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 1.00, result: 'P' },
+                    { code: 'A1535', name: 'DEV OPS LAB', month: 'November 2025', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.00, result: 'P' },
+                    { code: 'A1536', name: 'PROJECT STAGE-I', month: 'November 2025', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 3.00, result: 'P' }
+                ]
+            }
+        };
+
+        function LoginPage({ onLogin }) {
+            const [rollNo, setRollNo] = useState('');
+            const [password, setPassword] = useState('');
+            const [error, setError] = useState('');
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                if (rollNo === '22VE1A0560' && password === 'svnreddy@123') {
+                    onLogin(rollNo);
+                    setError('');
+                } else {
+                    setError('Invalid roll number or password');
+                }
+            };
+
+            return (
+                <div className="login-page">
+                    <div className="login-container">
+                        <div className="login-header">
+                            <div className="logo-icon"></div>
+                            <div className="login-subtitle">WELCOME</div>
+                            <div className="login-title">SREYAS</div>
+                        </div>
+                        <div className="login-form">
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label>Roll Number</label>
+                                    <input 
+                                        type="text" 
+                                        placeholder="Enter your roll number"
+                                        value={rollNo}
+                                        onChange={(e) => setRollNo(e.target.value)}
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label>Password</label>
+                                    <input 
+                                        type="password" 
+                                        placeholder="Enter your password"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                    />
+                                </div>
+                                <button type="submit" className="login-btn">Log In</button>
+                                {error && <div style={{color: 'red', textAlign: 'center', marginTop: '10px', fontSize: '14px'}}>{error}</div>}
+                                <div className="form-footer">
+                                    Enter your credentials to view academic results
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        function ResultsPage({ rollNo, onLogout }) {
+            return (
+                <div className="results-page">
+                    <div className="header">
+                        <div className="header-logo">
+                            <div className="header-icon"></div>
+                            <div className="header-title">SREYAS INSTITUTE OF ENGINEERING AND TECHNOLOGY</div>
+                        </div>
+                        <button className="logout-btn" onClick={onLogout}>Logout</button>
+                    </div>
+
+                    <div className="student-banner">
+                        <img src="student-photo.png.png" alt="Student" className="student-photo" />
+                        <div className="student-info">
+                            <div className="student-name">22VE1A0560-SUDINI VENKAT NARAYAN REDDY</div>
+                            <div className="student-email">svnreddy63@gmail.com</div>
+                        </div>
+                    </div>
+
+                    <div className="content">
+                        {Object.keys(semesterData).map(semKey => {
+                            const sem = semesterData[semKey];
+                            return (
+                                <div key={semKey} className="semester-section">
+                                    <div className="semester-title">{sem.title}</div>
+                                    
+                                    {sem.courses.length === 0 ? (
+                                        <div className="no-data">Course data will be added soon</div>
+                                    ) : (
+                                        <div className="table-container">
+                                            <table>
+                                                <thead>
+                                                    <tr>
+                                                        <th>Course Code</th>
+                                                        <th>Course Name</th>
+                                                        <th>Month Year</th>
+                                                        <th>Grade</th>
+                                                        <th>Grade Points</th>
+                                                        <th>Credits</th>
+                                                        <th>Result</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {sem.courses.map((course, idx) => (
+                                                        <tr key={idx} className={course.result === 'F' ? 'failed-row' : ''}>
+                                                            <td className="course-code">{course.code}</td>
+                                                            <td>{course.name}</td>
+                                                            <td>{course.month}</td>
+                                                            <td><span className={`grade ${course.gradeClass}`}>{course.grade}</span></td>
+                                                            <td>{course.points}</td>
+                                                            <td>{course.credits}</td>
+                                                            <td className={course.result === 'F' ? 'result-f' : 'result-p'}>{course.result}</td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                    </div>
+                </div>
+            );
+        }
+
+        function App() {
+            const [isLoggedIn, setIsLoggedIn] = useState(() => {
+                return localStorage.getItem('isLoggedIn') === 'true';
+            });
+            const [rollNo, setRollNo] = useState(() => {
+                return localStorage.getItem('rollNo') || '';
+            });
+
+            const handleLogin = (roll) => {
+                setRollNo(roll);
+                setIsLoggedIn(true);
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('rollNo', roll);
+            };
+
+            const handleLogout = () => {
+                setIsLoggedIn(false);
+                setRollNo('');
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('rollNo');
+            };
+
+            return isLoggedIn ? 
+                <ResultsPage rollNo={rollNo} onLogout={handleLogout} /> : 
+                <LoginPage onLogin={handleLogin} />;
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
