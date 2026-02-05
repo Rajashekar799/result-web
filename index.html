@@ -290,6 +290,38 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
+        .semester-summary {
+            display: flex;
+            justify-content: flex-end;
+            gap: 30px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border-left: 4px solid #1976d2;
+        }
+
+        .summary-item {
+            text-align: right;
+        }
+
+        .summary-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .summary-value {
+            font-size: 20px;
+            font-weight: 600;
+            color: #212529;
+        }
+
+        .sgpa-value {
+            color: #1976d2;
+        }
+
         .semester-title {
             font-size: 19px;
             font-weight: 600;
@@ -397,8 +429,8 @@
                     { code: 'A1001', name: 'BASIC ELECTRICAL ENGINEERING', month: 'December 2022', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
                     { code: 'A1701', name: 'COMPUTER AIDED ENGINEERING GRAPHICS', month: 'December 2022', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
                     { code: 'A1004', name: 'ELEMENTS OF COMPUTER SCIENCE & ENGINEERING', month: 'December 2022', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 1.00, result: 'P' },
-                    { code: 'A1001', name: 'ENGINEERING CHEMISTRY LABORATORY', month: 'December 2022', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
-                    { code: 'A1006', name: 'PROGRAMMING FOR PROBLEM SOLVING LABORATORY', month: 'December 2022', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.00, result: 'P' },
+                    { code: 'A1001', name: 'ENGINEERING CHEMISTRY LABORATORY', month: 'December 2022', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 1.00, result: 'P' },
+                    { code: 'A1006', name: 'PROGRAMMING FOR PROBLEM SOLVING LABORATORY', month: 'December 2022', grade: 'A+', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
                     { code: 'A1402', name: 'BASIC ELECTRICAL ENGINEERING LABORATORY', month: 'December 2022', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' }
                 ]
             },
@@ -407,13 +439,13 @@
                 courses: [
                     { code: 'A1010', name: 'ORDINARY DIFFERENTIAL EQUATIONS AND VECTOR CALCULUS', month: 'May 2023', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 4.00, result: 'P' },
                     { code: 'A1001', name: 'APPLIED PHYSICS', month: 'May 2023', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 4.00, result: 'P' },
-                    { code: 'A1303', name: 'ENGINEERING WORKSHOP', month: 'May 2023', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 2.50, result: 'P' },
-                    { code: 'A1005', name: 'ENGLISH FOR SKILL ENHANCEMENT', month: 'May 2023', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 2.00, result: 'P' },
+                    { code: 'A1303', name: 'ENGINEERING WORKSHOP', month: 'May 2023', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 2.50, result: 'P' },
+                    { code: 'A1005', name: 'ENGLISH FOR SKILL ENHANCEMENT', month: 'May 2023', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 2.00, result: 'P' },
                     { code: 'A1508', name: 'DATA STRUCTURES', month: 'May 2023', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 3.00, result: 'P' },
-                    { code: 'A1002', name: 'APPLIED PHYSICS LABORATORY', month: 'May 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.50, result: 'P' },
-                    { code: 'A1509', name: 'DATA STRUCTURES LABORATORY', month: 'May 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.00, result: 'P' },
-                    { code: 'A1006', name: 'ENGLISH LANGUAGE AND COMMUNICATION SKILLS LABORATORY', month: 'May 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.00, result: 'P' },
-                    { code: 'A1512', name: 'IT WORKSHOP', month: 'May 2023', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
+                    { code: 'A1002', name: 'APPLIED PHYSICS LABORATORY', month: 'May 2023', grade: 'A+', gradeClass: 'grade-a', points: 9, credits: 1.50, result: 'P' },
+                    { code: 'A1509', name: 'DATA STRUCTURES LABORATORY', month: 'May 2023', grade: 'A+', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
+                    { code: 'A1006', name: 'ENGLISH LANGUAGE AND COMMUNICATION SKILLS LABORATORY', month: 'May 2023', grade: 'A+', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
+                    { code: 'A1512', name: 'IT WORKSHOP', month: 'May 2023', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 1.00, result: 'P' },
                     { code: 'A1027', name: 'ENVIRONMENTAL SCIENCE', month: 'May 2023', grade: 'P', gradeClass: 'grade-b', points: 0, credits: 0.00, result: 'P' }
                 ]
             },
@@ -425,10 +457,10 @@
                     { code: 'A1011', name: 'COMPUTER ORIENTED STATISTICAL METHODS', month: 'December 2023', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 4.00, result: 'P' },
                     { code: 'A1515', name: 'COMPUTER ORGANIZATION AND ARCHITECTURE', month: 'December 2023', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
                     { code: 'A1516', name: 'DATABASE MANAGEMENT SYSTEMS', month: 'December 2023', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
-                    { code: 'A1514', name: 'PYTHON PROGRAMMING LAB', month: 'December 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.50, result: 'P' },
-                    { code: 'A1517', name: 'DATABASE MANAGEMENT SYSTEMS LAB', month: 'December 2023', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.50, result: 'P' },
+                    { code: 'A1514', name: 'PYTHON PROGRAMMING LAB', month: 'December 2023', grade: 'A+', gradeClass: 'grade-a', points: 9, credits: 1.50, result: 'P' },
+                    { code: 'A1517', name: 'DATABASE MANAGEMENT SYSTEMS LAB', month: 'December 2023', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 1.50, result: 'P' },
                     { code: 'A1518', name: 'GENDER SENSITIZATION LAB', month: 'December 2023', grade: 'P', gradeClass: 'grade-b', points: 0, credits: 0.00, result: 'P' },
-                    { code: 'A1538', name: 'SKILL DEVELOPMENT COURSE (DATA VISUALIZATION-R)', month: 'December 2023', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 0.00, result: 'P' },
+                    { code: 'A1538', name: 'SKILL DEVELOPMENT COURSE (DATA VISUALIZATION-R)', month: 'December 2023', grade: 'A+', gradeClass: 'grade-a', points: 9, credits: 0.00, result: 'P' },
                     { code: 'A1009', name: 'HUMAN VALUES & ETHICS', month: 'December 2023', grade: 'P', gradeClass: 'grade-b', points: 0, credits: 0.00, result: 'P' }
                 ]
             },
@@ -442,7 +474,7 @@
                     { code: 'A1601', name: 'SOFTWARE ENGINEERING', month: 'July 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
                     { code: 'A1604', name: 'OPERATING SYSTEMS LABORATORY', month: 'July 2024', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' },
                     { code: 'A1521', name: 'OBJECT ORIENTED PROGRAMMING THROUGH JAVA LABORATORY', month: 'July 2024', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 1.00, result: 'P' },
-                    { code: 'A1522', name: 'REAL-TIME RESEARCH PROJECT/SOCIETAL RELATED PROJECT', month: 'July 2024', grade: 'O', gradeClass: 'grade-b', points: 0, credits: 2.00, result: 'P' },
+                    { code: 'A1522', name: 'REAL-TIME RESEARCH PROJECT/SOCIETAL RELATED PROJECT', month: 'July 2024', grade: 'O', gradeClass: 'grade-b', points: 10, credits: 2.00, result: 'P' },
                     { code: 'A1605', name: 'SKILL DEVELOPMENT COURSE (NODE JS/REACT JS/DJANGO)', month: 'July 2024', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 1.00, result: 'P' },
                     { code: 'A1017', name: 'CONSTITUTION OF INDIA', month: 'July 2024', grade: 'P', gradeClass: 'grade-b', points: 0, credits: 0.00, result: 'P' }
                 ]
@@ -469,10 +501,10 @@
                     { code: 'A1604', name: 'AUTOMATA THEORY AND COMPILER DESIGN', month: 'May 2025', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' },
                     { code: 'A1611', name: 'MACHINE LEARNING', month: 'May 2025', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
                     { code: 'A1740', name: 'FULL STACK DEVELOPMENT', month: 'May 2025', grade: 'F', gradeClass: 'grade-f', points: 0, credits: 3.00, result: 'F' },
-                    { code: 'A1757', name: 'DISASTER PREPAREDNESS & PLANNING MANAGEMENT', month: 'May 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 3.00, result: 'P' },
-                    { code: 'A1537', name: 'CLOUD COMPUTING LAB', month: 'May 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
+                    { code: 'A1757', name: 'DISASTER PREPAREDNESS & PLANNING MANAGEMENT', month: 'May 2025', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 3.00, result: 'P' },
+                    { code: 'A1537', name: 'CLOUD COMPUTING LAB', month: 'May 2025', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 1.00, result: 'P' },
                     { code: 'A1643', name: 'FULL STACK DEVELOPMENT LAB', month: 'May 2025', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 1.00, result: 'P' },
-                    { code: 'A1530', name: 'CLOUD COMPUTING', month: 'May 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 1.00, result: 'P' },
+                    { code: 'A1530', name: 'CLOUD COMPUTING', month: 'May 2025', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 1.00, result: 'P' },
                     { code: 'A1022', name: 'LOGICAL REASONING - II', month: 'May 2025', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 1.00, result: 'P' },
                     { code: 'A1531', name: 'INDUSTRIAL ORIENTED MINI PROJECT/INTERNSHIP/SKILL DEVELOPMENT COURSE (BIG DATA SPARK)', month: 'May 2025', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 1.00, result: 'P' }
                 ]
@@ -481,13 +513,13 @@
                 title: 'IV Year - I Semester',
                 courses: [
                     { code: 'A1532', name: 'CRYPTOGRAPHY AND NETWORK SECURITY', month: 'November 2025', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
-                    { code: 'A1754', name: 'DATA MINING', month: 'November 2025', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 3.00, result: 'P' },
-                    { code: 'A1534', name: 'DEVOPS', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 3.00, result: 'P' },
-                    { code: 'A1594', name: 'PRINCIPLES OF ENTREPRENEURSHIP', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 3.00, result: 'P' },
-                    { code: 'A1576', name: 'SOFTWARE PROCESS & PROJECT MANAGEMENT', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 9, credits: 3.00, result: 'P' },
-                    { code: 'A1533', name: 'CRYPTOGRAPHY AND NETWORK SECURITY LAB', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 1.00, result: 'P' },
-                    { code: 'A1535', name: 'DEV OPS LAB', month: 'November 2025', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 1.00, result: 'P' },
-                    { code: 'A1536', name: 'PROJECT STAGE-I', month: 'November 2025', grade: 'A+', gradeClass: 'grade-a', points: 10, credits: 3.00, result: 'P' }
+                    { code: 'A1754', name: 'DATA MINING', month: 'November 2025', grade: 'B', gradeClass: 'grade-b', points: 6, credits: 3.00, result: 'P' },
+                    { code: 'A1534', name: 'DEVOPS', month: 'November 2025', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 3.00, result: 'P' },
+                    { code: 'A1594', name: 'PRINCIPLES OF ENTREPRENEURSHIP', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 3.00, result: 'P' },
+                    { code: 'A1576', name: 'SOFTWARE PROCESS & PROJECT MANAGEMENT', month: 'November 2025', grade: 'C', gradeClass: 'grade-c', points: 5, credits: 3.00, result: 'P' },
+                    { code: 'A1533', name: 'CRYPTOGRAPHY AND NETWORK SECURITY LAB', month: 'November 2025', grade: 'B+', gradeClass: 'grade-b-plus', points: 7, credits: 1.00, result: 'P' },
+                    { code: 'A1535', name: 'DEV OPS LAB', month: 'November 2025', grade: 'A', gradeClass: 'grade-a', points: 8, credits: 1.00, result: 'P' },
+                    { code: 'A1536', name: 'PROJECT STAGE-I', month: 'November 2025', grade: 'A+', gradeClass: 'grade-a', points: 9, credits: 3.00, result: 'P' }
                 ]
             }
         };
@@ -569,6 +601,17 @@
                     <div className="content">
                         {Object.keys(semesterData).map(semKey => {
                             const sem = semesterData[semKey];
+                            
+                            // Check if there are any failed subjects
+                            const hasFailed = sem.courses.some(course => course.result === 'F');
+                            
+                            // Calculate SGPA and passed subjects
+                            const totalCredits = sem.courses.reduce((sum, course) => sum + course.credits, 0);
+                            const totalPoints = sem.courses.reduce((sum, course) => sum + (course.points * course.credits), 0);
+                            const sgpa = !hasFailed && totalCredits > 0 ? (totalPoints / totalCredits).toFixed(2) : '-';
+                            const passedSubjects = sem.courses.filter(course => course.result === 'P').length;
+                            const totalSubjects = sem.courses.length;
+                            
                             return (
                                 <div key={semKey} className="semester-section">
                                     <div className="semester-title">{sem.title}</div>
@@ -576,34 +619,46 @@
                                     {sem.courses.length === 0 ? (
                                         <div className="no-data">Course data will be added soon</div>
                                     ) : (
-                                        <div className="table-container">
-                                            <table>
-                                                <thead>
-                                                    <tr>
-                                                        <th>Course Code</th>
-                                                        <th>Course Name</th>
-                                                        <th>Month Year</th>
-                                                        <th>Grade</th>
-                                                        <th>Grade Points</th>
-                                                        <th>Credits</th>
-                                                        <th>Result</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {sem.courses.map((course, idx) => (
-                                                        <tr key={idx} className={course.result === 'F' ? 'failed-row' : ''}>
-                                                            <td className="course-code">{course.code}</td>
-                                                            <td>{course.name}</td>
-                                                            <td>{course.month}</td>
-                                                            <td><span className={`grade ${course.gradeClass}`}>{course.grade}</span></td>
-                                                            <td>{course.points}</td>
-                                                            <td>{course.credits}</td>
-                                                            <td className={course.result === 'F' ? 'result-f' : 'result-p'}>{course.result}</td>
+                                        <>
+                                            <div className="table-container">
+                                                <table>
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Course Code</th>
+                                                            <th>Course Name</th>
+                                                            <th>Month Year</th>
+                                                            <th>Grade</th>
+                                                            <th>Grade Points</th>
+                                                            <th>Credits</th>
+                                                            <th>Result</th>
                                                         </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                                    </thead>
+                                                    <tbody>
+                                                        {sem.courses.map((course, idx) => (
+                                                            <tr key={idx} className={course.result === 'F' ? 'failed-row' : ''}>
+                                                                <td className="course-code">{course.code}</td>
+                                                                <td>{course.name}</td>
+                                                                <td>{course.month}</td>
+                                                                <td><span className={`grade ${course.gradeClass}`}>{course.grade}</span></td>
+                                                                <td>{course.points}</td>
+                                                                <td>{course.credits}</td>
+                                                                <td className={course.result === 'F' ? 'result-f' : 'result-p'}>{course.result}</td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div className="semester-summary">
+                                                <div className="summary-item">
+                                                    <div className="summary-label">Subjects Passed</div>
+                                                    <div className="summary-value">{passedSubjects} / {totalSubjects}</div>
+                                                </div>
+                                                <div className="summary-item">
+                                                    <div className="summary-label">SGPA</div>
+                                                    <div className="summary-value sgpa-value">{sgpa}</div>
+                                                </div>
+                                            </div>
+                                        </>
                                     )}
                                 </div>
                             );
