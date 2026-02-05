@@ -529,9 +529,20 @@
             const [password, setPassword] = useState('');
             const [error, setError] = useState('');
 
+            // Load saved credentials when component mounts
+            React.useEffect(() => {
+                const savedRollNo = localStorage.getItem('savedRollNo') || '';
+                const savedPassword = localStorage.getItem('savedPassword') || '';
+                setRollNo(savedRollNo);
+                setPassword(savedPassword);
+                setError('');
+            }, []);
+
             const handleSubmit = (e) => {
                 e.preventDefault();
                 if (rollNo === '22VE1A0560' && password === 'svnreddy@123') {
+                    localStorage.setItem('savedRollNo', rollNo);
+                    localStorage.setItem('savedPassword', password);
                     onLogin(rollNo);
                     setError('');
                 } else {
@@ -684,15 +695,18 @@
             };
 
             const handleLogout = () => {
-                setIsLoggedIn(false);
-                setRollNo('');
+                // Clear only session state
                 localStorage.removeItem('isLoggedIn');
                 localStorage.removeItem('rollNo');
+
+                // Then update state
+                setRollNo('');
+                setIsLoggedIn(false);
             };
 
             return isLoggedIn ? 
                 <ResultsPage rollNo={rollNo} onLogout={handleLogout} /> : 
-                <LoginPage onLogin={handleLogin} />;
+                <LoginPage key={Date.now()} onLogin={handleLogin} />;
         }
 
         ReactDOM.render(<App />, document.getElementById('root'));
